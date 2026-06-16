@@ -10,6 +10,22 @@
 
 ---
 
+## Scaffold Reality Adjustments (post-Task-0)
+
+The actual `@tanstack/cli` Start scaffold differs from the plan's original assumptions. These overrides apply to ALL tasks below:
+
+- **Path alias:** use `@/` (NOT `~/`). `@/*` and `#/*` both map to `./src/*` in tsconfig; standardize on `@/`. Every `~/...` import in this plan means `@/...`.
+- **Vite already wires Tailwind v4** (`@tailwindcss/vite`) and the root route links `src/styles.css` via `import appCss from '../styles.css?url'`. So Task 1 does NOT install Tailwind or import CSS in the root — it edits the EXISTING `src/styles.css` (no `src/styles/app.css`) and runs shadcn init + theme tokens only.
+- **Stylesheet path:** `src/styles.css` (single file the root already links). Put `@import "tailwindcss"` + theme tokens there if not already present.
+- **Root shell:** `src/routes/__root.tsx` uses `shellComponent: RootDocument` rendering `<html><head><HeadContent/></head><body>{children}<Scripts/></body></html>`, plus `head: () => ({ meta:[...], links:[...] })`. Nav/Footer/Toaster (Task 7) go inside `<body>` around `{children}` (add a root `component` with `<Nav/><Outlet/><Footer/>` OR place them in the shell around `{children}` — implementer picks based on the generated file).
+- **SEO meta shape:** route `head: () => ({ meta: seo({...}) })` where `seo()` returns a meta-tag array. Confirmed compatible.
+- **Server function API (Task 13):** `import { createServerFn } from '@tanstack/react-start'`; `createServerFn({ method: 'POST' }).validator((d:unknown)=>d).handler(async ({ data }) => …)`. As written in the plan.
+- **Prerender (Task 12):** configured via the `tanstackStart()` Vite plugin `prerender` options in `vite.config.ts` and/or per-route, NOT a `prerender` route export. Implementer verifies the installed version's API and wires the project slug paths accordingly.
+- **Vitest:** set `resolve.alias` `@` → `/src` (not `~`).
+- **dev port caveat:** `vite dev --port 3000` can fail EACCES on this machine; use `--port 5173 --host 127.0.0.1` for manual boot checks.
+
+---
+
 ## File Structure
 
 ```
