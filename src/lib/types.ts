@@ -10,6 +10,9 @@ export const CATEGORIES: { value: Category; label: string }[] = [
   { value: 'other', label: 'Other' },
 ]
 
+export type BudgetBracket = '<$5k' | '$5k–$15k' | '$15k–$50k' | '$50k+'
+export type TimelineNeed = 'ASAP' | '1–3 months' | 'Flexible'
+
 export interface ProjectResult { label: string; value: string }
 
 export interface Project {
@@ -34,8 +37,8 @@ export interface Project {
 
 export interface LeadSubmission {
   projectType: Category
-  budgetBracket: string
-  timelineNeed: string
+  budgetBracket: BudgetBracket
+  timelineNeed: TimelineNeed
   name: string
   email: string
   message: string

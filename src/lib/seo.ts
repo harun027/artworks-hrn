@@ -17,5 +17,7 @@ export function seo({ title, description, image }: SeoArgs) {
         ]
       : []),
   ]
-  return tags.filter((t) => Object.values(t).every((v) => v !== undefined))
+  // Drop only tags whose `content` is undefined (e.g. missing description/image);
+  // tags without a `content` key (like `{ title }`) are always kept.
+  return tags.filter((t) => !('content' in t) || t.content !== undefined)
 }
