@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button'
 export function Nav() {
   return (
     <header className="sticky top-0 z-50 glass">
-      <nav className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+      <nav aria-label="Main" className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <Link to="/" className="font-display text-xl font-extrabold tracking-tight">
           HRN<span className="text-primary">.</span>
         </Link>

@@ -45,5 +45,6 @@ export async function processLead(raw: unknown): Promise<{ ok: true }> {
 }
 
 export const sendLead = createServerFn({ method: 'POST' })
-  .validator((d: unknown) => d)
+  // Validate here so invalid input surfaces as a structured error, not a 500.
+  .validator((d: unknown) => leadSchema.parse(d))
   .handler(async ({ data }) => processLead(data))

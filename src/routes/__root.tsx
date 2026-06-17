@@ -5,13 +5,17 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
 import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
+import { NotFound } from '@/components/not-found'
 import { Toaster } from '@/components/ui/sonner'
 import { seo } from '@/lib/seo'
 import appCss from '../styles.css?url'
 
+// Single instance is fine for a prerendered/mutation-only app.
+// Move inside a per-request provider if SSR with user-specific queries is added.
 const queryClient = new QueryClient()
 
 export const Route = createRootRoute({
+  notFoundComponent: NotFound,
   head: () => ({
     meta: [
       { charSet: 'utf-8' },

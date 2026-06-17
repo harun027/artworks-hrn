@@ -15,7 +15,7 @@ function EstimatePage() {
   const mutation = useMutation({
     mutationFn: (data: LeadInput) => sendLead({ data }),
     onSuccess: () => toast.success('Thanks! Check your inbox — I will be in touch.'),
-    onError: () => toast.error('Something went wrong. Email me directly at hello@example.com.'),
+    onError: () => toast.error('Something went wrong — please try again, or reach out directly.'),
   })
 
   return (

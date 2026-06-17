@@ -22,5 +22,13 @@ export function ProjectCard({ project, asLink = true }: { project: Project; asLi
     </div>
   )
   if (!asLink) return inner
-  return <Link to="/work/$slug" params={{ slug: project.slug }}>{inner}</Link>
+  return (
+    <Link
+      to="/work/$slug"
+      params={{ slug: project.slug }}
+      aria-label={`View case study: ${project.title}`}
+    >
+      {inner}
+    </Link>
+  )
 }
