@@ -1,0 +1,5 @@
+# pnpm settings. onlyBuiltDependencies lists packages allowed to run install
+# scripts (build native binaries) — moved here from package.json in pnpm 10+.
+onlyBuiltDependencies:
+  - esbuild
+  - lightningcss

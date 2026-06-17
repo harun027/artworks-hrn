@@ -16,8 +16,8 @@ Built with **TanStack Start** (SSR + prerendering), **shadcn/ui**, and an editor
 ## Getting started
 
 ```bash
-npm install
-npm run dev          # http://localhost:5173
+pnpm install
+pnpm dev          # http://localhost:5173
 ```
 
 > The dev/preview servers bind to `127.0.0.1` on ports `5173` / `4173` (port 3000 is reserved on some Windows machines).
@@ -42,11 +42,11 @@ Without these the whole site still runs — only the estimator submit will show 
 
 | Command                   | Description                                |
 | ------------------------- | ------------------------------------------ |
-| `npm run dev`             | Dev server (Vite)                          |
-| `npm run build`           | Production build + prerender static pages  |
-| `npm run preview`         | Preview the production build               |
-| `npm run test`            | Run the Vitest suite                       |
-| `npm run generate-routes` | Regenerate the TanStack route tree         |
+| `pnpm dev`             | Dev server (Vite)                          |
+| `pnpm build`           | Production build + prerender static pages  |
+| `pnpm preview`         | Preview the production build               |
+| `pnpm test`            | Run the Vitest suite                       |
+| `pnpm generate-routes` | Regenerate the TanStack route tree         |
 
 ## Adding a project
 
@@ -74,7 +74,7 @@ public/projects/     # case-study images
 
 ## Deploy
 
-`npm run build` produces a TanStack Start server build plus prerendered static
+`pnpm build` produces a TanStack Start server build plus prerendered static
 case-study pages. Deploy to any Node host, or add the deployment adapter for your
 target platform (see the [TanStack Start hosting docs](https://tanstack.com/start/latest/docs/framework/react/hosting)).
 Set `RESEND_API_KEY`, `LEAD_TO_EMAIL`, and `LEAD_FROM_EMAIL` as environment
@@ -83,7 +83,7 @@ variables on the host.
 ## Testing
 
 ```bash
-npm run test
+pnpm test
 ```
 
 Covers the estimator rules, the lead Zod schema, the content loader, and the key components + server function.
