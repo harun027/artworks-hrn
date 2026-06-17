@@ -20,7 +20,7 @@ describe('EstimatorForm', () => {
     render(<EstimatorForm onSubmit={onSubmit} pending={false} />)
     await userEvent.type(screen.getByLabelText(/name/i), 'Ada')
     await userEvent.type(screen.getByLabelText(/email/i), 'ada@example.com')
-    await userEvent.type(screen.getByLabelText(/message/i), 'I need a marketing website soon.')
+    await userEvent.type(screen.getByLabelText(/project details/i), 'I need a marketing website soon.')
     await userEvent.click(screen.getByRole('button', { name: /get my estimate/i }))
     expect(onSubmit).toHaveBeenCalledTimes(1)
     expect(onSubmit.mock.calls[0][0].name).toBe('Ada')

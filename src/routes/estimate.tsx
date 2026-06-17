@@ -1,8 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useMutation } from '@tanstack/react-query'
+import { CheckCircle2 } from 'lucide-react'
 import { toast } from 'sonner'
 import { EstimatorForm } from '@/components/estimator-form'
-import { GhostLetter } from '@/components/ghost-letter'
 import { sendLead } from '@/server/send-lead'
 import type { LeadInput } from '@/lib/schema'
 import { seo } from '@/lib/seo'
@@ -20,27 +20,24 @@ function EstimatePage() {
   })
 
   return (
-    <main className="mx-auto max-w-4xl space-y-4 px-4 pt-6">
-      <section className="panel-dark relative overflow-hidden rounded-[2rem] p-8 sm:p-10">
-        <GhostLetter char="?" className="-right-2 -top-10 text-[16rem] text-white/[0.04]" />
-        <div className="relative">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/50">Estimate</p>
-          <h1 className="mt-3 font-display text-5xl font-extrabold text-white">Start your project</h1>
-          <p className="mt-3 max-w-md text-white/60">
-            Pick a few options for an instant ballpark, then send it over — it reaches me directly.
-          </p>
-        </div>
-      </section>
+    <main className="mx-auto max-w-4xl px-6 py-14">
+      <header className="max-w-xl">
+        <h1 className="font-display text-3xl font-bold tracking-tight sm:text-4xl">Start your project</h1>
+        <p className="mt-3 text-muted-foreground">
+          Pick a few options for an instant ballpark, then send it over — it reaches me directly.
+        </p>
+      </header>
 
       {mutation.isSuccess ? (
-        <div className="panel-light rounded-[2rem] border border-border p-12 text-center">
-          <h2 className="font-display text-3xl font-extrabold">Message sent 🎉</h2>
-          <p className="mt-3 text-muted-foreground">
+        <div className="mt-10 rounded-xl border border-border bg-card p-12 text-center card-soft">
+          <CheckCircle2 className="mx-auto h-12 w-12 text-accent" strokeWidth={1.5} />
+          <h2 className="mt-4 font-display text-2xl font-bold tracking-tight">Message sent</h2>
+          <p className="mt-2 text-muted-foreground">
             I will review it and reply personally. Check your email for a confirmation.
           </p>
         </div>
       ) : (
-        <div className="panel-light rounded-[2rem] border border-border p-8 sm:p-10">
+        <div className="mt-10 rounded-xl border border-border bg-card p-6 card-soft sm:p-8">
           <EstimatorForm onSubmit={(d) => mutation.mutate(d)} pending={mutation.isPending} />
         </div>
       )}

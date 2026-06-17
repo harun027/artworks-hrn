@@ -5,8 +5,8 @@ import { cn } from '@/lib/utils'
 export type FilterValue = Category | 'all'
 
 export function CategoryFilter({
-  value, onChange, tone = 'light',
-}: { value: FilterValue; onChange: (v: FilterValue) => void; tone?: 'light' | 'dark' }) {
+  value, onChange,
+}: { value: FilterValue; onChange: (v: FilterValue) => void }) {
   const options: { value: FilterValue; label: string }[] = [
     { value: 'all', label: 'All' }, ...CATEGORIES,
   ]
@@ -20,15 +20,10 @@ export function CategoryFilter({
             type="button"
             variant={active ? 'default' : 'outline'}
             size="sm"
+            aria-pressed={active}
             className={cn(
-              'rounded-full font-medium',
-              tone === 'dark'
-                ? active
-                  ? 'bg-white text-ink hover:bg-white/90'
-                  : 'border-white/20 bg-transparent text-white/60 hover:bg-white/10 hover:text-white'
-                : active
-                  ? 'bg-ink text-ink-foreground hover:bg-ink/90'
-                  : 'border-border bg-transparent text-muted-foreground hover:text-foreground',
+              'font-medium',
+              !active && 'border-border bg-transparent text-muted-foreground hover:bg-secondary hover:text-foreground',
             )}
             onClick={() => onChange(o.value)}
           >

@@ -23,10 +23,10 @@ export const Route = createFileRoute('/work/$slug')({
 function CaseStudyPage() {
   const p = Route.useLoaderData()
   return (
-    <main className="mx-auto max-w-5xl space-y-4 px-4 pt-6">
+    <main className="mx-auto max-w-5xl px-6 py-12">
       <CaseStudyHero project={p} />
-      <div className="grid gap-4 lg:grid-cols-[1fr_320px]">
-        <article className="panel-light space-y-8 rounded-[1.5rem] border border-border p-8 sm:p-10">
+      <div className="mt-12 grid gap-10 lg:grid-cols-[1fr_300px] lg:gap-12">
+        <article className="space-y-10">
           <Section title="The problem" body={p.problem} />
           <Section title="The solution" body={p.solution} />
           <Section title="The outcome" body={p.outcome} />
@@ -37,10 +37,10 @@ function CaseStudyPage() {
           <InfoPanel project={p} />
         </div>
       </div>
-      <section className="gradient-accent relative overflow-hidden rounded-[2rem] p-10 text-center sm:p-12">
-        <h2 className="font-display text-3xl font-extrabold text-white">Want something like this?</h2>
-        <p className="mt-2 text-white/80">Get a ballpark estimate in under a minute.</p>
-        <Button asChild size="lg" className="mt-6 rounded-full bg-white px-7 font-semibold text-ink hover:bg-white/90">
+      <section className="mt-16 rounded-2xl border border-border bg-secondary px-8 py-12 text-center">
+        <h2 className="font-display text-2xl font-bold tracking-tight">Want something like this?</h2>
+        <p className="mt-2 text-muted-foreground">Get a ballpark estimate in under a minute.</p>
+        <Button asChild size="lg" className="mt-6">
           <Link to="/estimate">Start your project</Link>
         </Button>
       </section>
@@ -51,8 +51,8 @@ function CaseStudyPage() {
 function Section({ title, body }: { title: string; body: string }) {
   return (
     <section>
-      <h2 className="font-display text-xl font-extrabold">{title}</h2>
-      <p className="mt-2 leading-relaxed text-muted-foreground">{body}</p>
+      <h2 className="font-display text-xl font-semibold tracking-tight">{title}</h2>
+      <p className="mt-3 leading-relaxed text-muted-foreground">{body}</p>
     </section>
   )
 }

@@ -31,6 +31,9 @@ export interface Project {
   timeline: string
   teamSize: string
   effortRange: string
+  year?: string
+  role?: string
+  services?: string[]
   liveUrl?: string
   featured?: boolean
 }

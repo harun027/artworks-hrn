@@ -19,5 +19,8 @@ export const sampleDashboard: Project = {
   timeline: '9 weeks',
   teamSize: '2 people',
   effortRange: '$12k–$18k',
+  year: '2024',
+  role: 'Frontend & Data Viz',
+  services: ['Dashboard UX', 'Realtime data wiring', 'Charts & alerts'],
   featured: true,
 }

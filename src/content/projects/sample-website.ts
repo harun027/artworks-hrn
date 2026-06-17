@@ -20,6 +20,9 @@ export const sampleWebsite: Project = {
   timeline: '4 weeks',
   teamSize: 'Solo',
   effortRange: '$4k–$7k',
+  year: '2025',
+  role: 'Design & Build',
+  services: ['UX & UI design', 'Responsive build', 'Launch & handoff'],
   liveUrl: 'https://example.com',
   featured: true,
 }

@@ -2,6 +2,7 @@ import { HeadContent, Scripts, createRootRoute } from '@tanstack/react-router'
 import { TanStackRouterDevtoolsPanel } from '@tanstack/react-router-devtools'
 import { TanStackDevtools } from '@tanstack/react-devtools'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ThemeProvider } from 'next-themes'
 
 import { Nav } from '@/components/nav'
 import { Footer } from '@/components/footer'
@@ -30,19 +31,25 @@ export const Route = createRootRoute({
   shellComponent: RootDocument,
 })
 
+// Set the theme class before first paint to avoid a flash of the wrong theme.
+const themeScript = `(function(){try{var e=localStorage.getItem('theme')||'dark';var m=window.matchMedia('(prefers-color-scheme: dark)').matches;var d=e==='dark'||(e==='system'&&m);document.documentElement.classList.toggle('dark',d);}catch(e){}})();`
+
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body>
-        <QueryClientProvider client={queryClient}>
-          <Nav />
-          {children}
-          <Footer />
-          <Toaster />
-        </QueryClientProvider>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange storageKey="theme">
+          <QueryClientProvider client={queryClient}>
+            <Nav />
+            {children}
+            <Footer />
+            <Toaster />
+          </QueryClientProvider>
+        </ThemeProvider>
         <TanStackDevtools
           config={{ position: 'bottom-right' }}
           plugins={[
