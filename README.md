@@ -12,7 +12,6 @@ Built with **TanStack Start** (SSR + prerendering), **shadcn/ui**, and an editor
 - **react-hook-form** + **Zod** — shared validation, client & server
 - **Resend** — transactional email for leads
 - **TypeScript**, **Vitest** + Testing Library
-- Deploy target: **Netlify** (adapter preconfigured)
 
 ## Getting started
 
@@ -73,15 +72,13 @@ src/
 public/projects/     # case-study images
 ```
 
-## Deploy (Netlify)
+## Deploy
 
-The Netlify adapter is already wired in `vite.config.ts` and `netlify.toml`.
-
-1. Create a site from this repo: Netlify dashboard → **Add new site → Import from Git**, or run `npx netlify init`.
-2. Build command `npm run build`; the adapter handles the SSR function + static output.
-3. Set `RESEND_API_KEY`, `LEAD_TO_EMAIL`, `LEAD_FROM_EMAIL` under **Site settings → Environment variables**.
-
-Server functions run on Netlify Functions; static case-study pages are prerendered at build time.
+`npm run build` produces a TanStack Start server build plus prerendered static
+case-study pages. Deploy to any Node host, or add the deployment adapter for your
+target platform (see the [TanStack Start hosting docs](https://tanstack.com/start/latest/docs/framework/react/hosting)).
+Set `RESEND_API_KEY`, `LEAD_TO_EMAIL`, and `LEAD_FROM_EMAIL` as environment
+variables on the host.
 
 ## Testing
 
