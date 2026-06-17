@@ -9,8 +9,9 @@ import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Label } from '@/components/ui/label'
 
-const BUDGETS = ['<$5k', '$5k–$15k', '$15k–$50k', '$50k+'] as const
-const TIMELINES = ['ASAP', '1–3 months', 'Flexible'] as const
+// Derived from the schema so the selects stay in sync with validation.
+const BUDGETS = leadSchema.shape.budgetBracket.options
+const TIMELINES = leadSchema.shape.timelineNeed.options
 
 export function EstimatorForm({
   onSubmit, pending,
