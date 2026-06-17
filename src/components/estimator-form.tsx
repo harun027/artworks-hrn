@@ -32,21 +32,21 @@ export function EstimatorForm({
       <form className="space-y-5" onSubmit={handleSubmit(onSubmit)} noValidate>
         <div>
           <Label htmlFor="projectType">Project type</Label>
-          <select id="projectType" className="mt-1 w-full rounded-md border border-input bg-card p-2"
+          <select id="projectType" className="mt-1.5 w-full rounded-xl border border-input bg-card p-2.5 text-sm"
                   {...register('projectType')}>
             {CATEGORIES.map((c) => <option key={c.value} value={c.value}>{c.label}</option>)}
           </select>
         </div>
         <div>
           <Label htmlFor="budgetBracket">Budget</Label>
-          <select id="budgetBracket" className="mt-1 w-full rounded-md border border-input bg-card p-2"
+          <select id="budgetBracket" className="mt-1.5 w-full rounded-xl border border-input bg-card p-2.5 text-sm"
                   {...register('budgetBracket')}>
             {BUDGETS.map((b) => <option key={b} value={b}>{b}</option>)}
           </select>
         </div>
         <div>
           <Label htmlFor="timelineNeed">Timeline</Label>
-          <select id="timelineNeed" className="mt-1 w-full rounded-md border border-input bg-card p-2"
+          <select id="timelineNeed" className="mt-1.5 w-full rounded-xl border border-input bg-card p-2.5 text-sm"
                   {...register('timelineNeed')}>
             {TIMELINES.map((t) => <option key={t} value={t}>{t}</option>)}
           </select>
@@ -68,7 +68,12 @@ export function EstimatorForm({
         </div>
         <input type="text" tabIndex={-1} autoComplete="off" aria-hidden="true"
                className="hidden" {...register('website')} />
-        <Button type="submit" disabled={pending} className="gradient-accent text-white">
+        <Button
+          type="submit"
+          size="lg"
+          disabled={pending}
+          className="rounded-full bg-ink px-7 font-semibold text-ink-foreground hover:bg-ink/90"
+        >
           {pending ? 'Sending…' : 'Get my estimate'}
         </Button>
       </form>
