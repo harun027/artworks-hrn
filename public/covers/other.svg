@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#475569"/>
+      <stop offset="1" stop-color="#0f172a"/>
+    </linearGradient>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="70"/>
+    </filter>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <g filter="url(#blur)">
+    <circle cx="220" cy="240" r="200" fill="#64748b" opacity="0.6"/>
+    <circle cx="640" cy="540" r="240" fill="#94a3b8" opacity="0.4"/>
+    <circle cx="400" cy="880" r="200" fill="#475569" opacity="0.5"/>
+  </g>
+  <g stroke="#ffffff" stroke-width="2" opacity="0.12">
+    <path d="M160 360 H640 M160 460 H640 M160 560 H640 M160 660 H640"/>
+    <path d="M260 300 V720 M380 300 V720 M500 300 V720"/>
+  </g>
+  <g fill="#ffffff" opacity="0.92">
+    <path d="M400 360 l26 70 l70 26 l-70 26 l-26 70 l-26 -70 l-70 -26 l70 -26 z"/>
+  </g>
+  <g fill="#ffffff" opacity="0.7">
+    <path d="M560 470 l14 38 l38 14 l-38 14 l-14 38 l-14 -38 l-38 -14 l38 -14 z"/>
+  </g>
+</svg>

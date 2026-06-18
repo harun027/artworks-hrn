@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f43f5e"/>
+      <stop offset="1" stop-color="#db2777"/>
+    </linearGradient>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="70"/>
+    </filter>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <g filter="url(#blur)">
+    <circle cx="210" cy="240" r="200" fill="#fda4af" opacity="0.55"/>
+    <circle cx="630" cy="540" r="240" fill="#f472b6" opacity="0.5"/>
+    <circle cx="400" cy="890" r="200" fill="#fbcfe8" opacity="0.45"/>
+  </g>
+  <g>
+    <rect x="180" y="320" width="440" height="300" rx="20" fill="none" stroke="#ffffff" stroke-width="3" opacity="0.5"/>
+    <rect x="180" y="320" width="440" height="54" rx="20" fill="#ffffff" opacity="0.16"/>
+    <circle cx="212" cy="347" r="7" fill="#ffffff" opacity="0.85"/>
+    <circle cx="238" cy="347" r="7" fill="#ffffff" opacity="0.7"/>
+    <circle cx="264" cy="347" r="7" fill="#ffffff" opacity="0.55"/>
+    <rect x="210" y="406" width="170" height="180" rx="14" fill="#ffffff" opacity="0.16"/>
+    <rect x="402" y="406" width="190" height="80" rx="14" fill="#ffffff" opacity="0.85"/>
+    <rect x="402" y="500" width="190" height="14" rx="7" fill="#ffffff" opacity="0.5"/>
+    <rect x="402" y="530" width="150" height="14" rx="7" fill="#ffffff" opacity="0.4"/>
+    <rect x="360" y="640" width="80" height="46" fill="#ffffff" opacity="0.4"/>
+    <rect x="300" y="686" width="200" height="16" rx="8" fill="#ffffff" opacity="0.6"/>
+  </g>
+</svg>

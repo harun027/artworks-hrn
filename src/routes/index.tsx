@@ -1,22 +1,24 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import {
   ArrowRight, Globe, Smartphone, Server, Monitor, LayoutDashboard, Boxes,
-  ClipboardList, Hammer, Rocket,
+  ClipboardList, Hammer, Rocket, type LucideIcon,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ProjectCard } from '@/components/project-card'
+import { ServiceCard } from '@/components/service-card'
+import { HeroVisual } from '@/components/hero-visual'
 import { featuredProjects } from '@/content/projects'
 import type { Category } from '@/lib/types'
 
 export const Route = createFileRoute('/')({ component: Home })
 
-const SERVICES: { category: Category; label: string; desc: string; icon: typeof Globe }[] = [
-  { category: 'website', label: 'Websites', desc: 'Marketing sites & landing pages that load fast and convert.', icon: Globe },
-  { category: 'mobile', label: 'Mobile apps', desc: 'Cross-platform iOS & Android apps from one codebase.', icon: Smartphone },
-  { category: 'saas', label: 'SaaS products', desc: 'Auth, billing, and core features wired end to end.', icon: Server },
-  { category: 'dashboard', label: 'Dashboards', desc: 'Real-time data, charts, and filters teams actually use.', icon: LayoutDashboard },
-  { category: 'desktop', label: 'Desktop apps', desc: 'Cross-platform desktop builds with native packaging.', icon: Monitor },
-  { category: 'other', label: 'Something else', desc: 'Tools, integrations, and one-off builds — let’s scope it.', icon: Boxes },
+const SERVICES: { category: Category; label: string; tag: string; icon: LucideIcon; image: string }[] = [
+  { category: 'website', label: 'Websites', tag: 'Web', icon: Globe, image: '/covers/website.svg' },
+  { category: 'mobile', label: 'Mobile apps', tag: 'iOS & Android', icon: Smartphone, image: '/covers/mobile.svg' },
+  { category: 'saas', label: 'SaaS products', tag: 'Product', icon: Server, image: '/covers/saas.svg' },
+  { category: 'dashboard', label: 'Dashboards', tag: 'Realtime', icon: LayoutDashboard, image: '/covers/dashboard.svg' },
+  { category: 'desktop', label: 'Desktop apps', tag: 'Cross-platform', icon: Monitor, image: '/covers/desktop.svg' },
+  { category: 'other', label: 'Something else', tag: 'Custom', icon: Boxes, image: '/covers/other.svg' },
 ]
 
 const STEPS = [
@@ -29,28 +31,33 @@ function Home() {
   return (
     <main className="mx-auto max-w-6xl px-6">
       {/* Hero */}
-      <section className="border-b border-border py-20 sm:py-28">
-        <div className="max-w-3xl">
-          <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3.5 py-1.5 text-sm font-medium text-muted-foreground">
-            <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true" />
-            Available for new projects
-          </span>
-          <h1 className="mt-6 font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
-            I design and build digital products that ship.
-          </h1>
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-            Websites, mobile apps, SaaS, desktop apps, and dashboards — presented as full case
-            studies, with a one-minute way to estimate your own project.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg">
-              <Link to="/estimate">
-                Get an estimate <ArrowRight className="ml-1.5 h-5 w-5" strokeWidth={2} />
-              </Link>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link to="/work">View work</Link>
-            </Button>
+      <section className="border-b border-border py-20 sm:py-24">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-10">
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary px-3.5 py-1.5 text-sm font-medium text-muted-foreground">
+              <span className="h-2 w-2 rounded-full bg-emerald-500" aria-hidden="true" />
+              Available for new projects
+            </span>
+            <h1 className="mt-6 font-display text-4xl font-bold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
+              I design and build digital products that ship.
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+              Websites, mobile apps, SaaS, desktop apps, and dashboards — presented as full case
+              studies, with a one-minute way to estimate your own project.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Button asChild size="lg">
+                <Link to="/estimate">
+                  Get an estimate <ArrowRight className="ml-1.5 h-5 w-5" strokeWidth={2} />
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline">
+                <Link to="/work">View work</Link>
+              </Button>
+            </div>
+          </div>
+          <div className="hidden lg:block">
+            <HeroVisual />
           </div>
         </div>
       </section>
@@ -61,20 +68,16 @@ function Home() {
         <p className="mt-2 max-w-xl text-muted-foreground">
           End-to-end design and development across the products teams need most.
         </p>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES.map((s) => (
-            <Link
+            <ServiceCard
               key={s.category}
-              to="/work"
-              search={{ category: s.category }}
-              className="group rounded-xl border border-border bg-card p-6 card-soft transition-all hover:border-foreground/15 hover:shadow-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-            >
-              <div className="flex h-11 w-11 items-center justify-center rounded-lg bg-secondary text-accent">
-                <s.icon className="h-5 w-5" strokeWidth={2} />
-              </div>
-              <h3 className="mt-4 font-display text-lg font-semibold tracking-tight">{s.label}</h3>
-              <p className="mt-1.5 text-[0.95rem] leading-relaxed text-muted-foreground">{s.desc}</p>
-            </Link>
+              category={s.category}
+              label={s.label}
+              tag={s.tag}
+              icon={s.icon}
+              image={s.image}
+            />
           ))}
         </div>
       </section>

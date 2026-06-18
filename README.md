@@ -30,23 +30,23 @@ The estimator emails leads via Resend. Copy the example and fill it in:
 cp .env.example .env
 ```
 
-| Variable          | Purpose                                                 |
-| ----------------- | ------------------------------------------------------- |
-| `RESEND_API_KEY`  | Resend API key                                          |
-| `LEAD_TO_EMAIL`   | Where lead notifications are sent (your inbox)          |
-| `LEAD_FROM_EMAIL` | From address — must be on a **Resend-verified domain**  |
+| Variable          | Purpose                                                |
+| ----------------- | ------------------------------------------------------ |
+| `RESEND_API_KEY`  | Resend API key                                         |
+| `LEAD_TO_EMAIL`   | Where lead notifications are sent (your inbox)         |
+| `LEAD_FROM_EMAIL` | From address — must be on a **Resend-verified domain** |
 
 Without these the whole site still runs — only the estimator submit will show an error toast.
 
 ## Scripts
 
-| Command                   | Description                                |
-| ------------------------- | ------------------------------------------ |
-| `pnpm dev`             | Dev server (Vite)                          |
-| `pnpm build`           | Production build + prerender static pages  |
-| `pnpm preview`         | Preview the production build               |
-| `pnpm test`            | Run the Vitest suite                       |
-| `pnpm generate-routes` | Regenerate the TanStack route tree         |
+| Command                | Description                               |
+| ---------------------- | ----------------------------------------- |
+| `pnpm dev`             | Dev server (Vite)                         |
+| `pnpm build`           | Production build + prerender static pages |
+| `pnpm preview`         | Preview the production build              |
+| `pnpm test`            | Run the Vitest suite                      |
+| `pnpm generate-routes` | Regenerate the TanStack route tree        |
 
 ## Adding a project
 
